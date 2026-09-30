@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Home Planner — PocketSmart AI{% endblock %}{% block content %}
+<section class="planner"><a class="back" href="/">← Back</a><div class="eyebrow">01 · HOME INTERIOR</div>
+<h1>Build a room that <span>fits your budget.</span></h1><p class="lead">Tell us what you need. PocketSmart will organize a practical furniture, lighting and decor plan.</p>
+<div class="planner-grid"><form id="home-form" class="formbox">
+<label>Budget<input id="home-budget" type="number" min="1" placeholder="50000" required></label>
+<div class="twocol"><label>Room<select id="room-type"><option>Living Room</option><option>Bedroom</option><option>Kitchen</option><option>Dining Room</option></select></label><label>Style<select id="home-style"><option>Modern</option><option>Minimalist</option><option>Traditional</option><option>Luxury</option></select></label></div>
+<div class="three"><label>Lights<input id="lights" type="number" min="0" value="2"></label><label>Fans<input id="fans" type="number" min="0" value="1"></label><label>Tables<input id="tables" type="number" min="0" value="1"></label></div>
+<label>Additional requirements<textarea id="home-requirements" placeholder="Example: warm lighting and wooden furniture"></textarea></label>
+<button class="btn primary" type="submit">Generate home plan ✦</button><div id="home-status"></div>
+</form><aside><h3>What you'll get</h3><p>✓ Budget allocation</p><p>✓ Furniture & decor ideas</p><p>✓ Estimated prices</p><p>✓ Platform search links</p><p>✓ Saved recommendation history</p></aside></div></section>{% endblock %}

@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block title %}Recommendation - PocketSmart AI{% endblock %}
+
+{% block content %}
+
+<section class="section">
+    <div class="container">
+
+        <!-- ============================= -->
+        <!-- HEADER -->
+        <!-- ============================= -->
+
+        <div class="page-header">
+
+            <div>
+                <span class="eyebrow">YOUR RECOMMENDATION</span>
+
+                <h1>{{ result.get('summary', 'Your Recommendation') }}</h1>
+
+                <p>
+                    Here is your personalized plan based on your budget and requirements.
+                </p>
+            </div>
+
+            <div class="budget-card">
+                <span>Budget</span>
+
+                <strong>
+                    ₹{{ result.get('budget', 0) }}
+                </strong>
+            </div>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- PARTY BUDGET BREAKDOWN -->
+        <!-- ============================= -->
+
+        {% if result.get('budget_breakdown') %}
+
+        <div class="budget-breakdown">
+
+            <h2>Budget Breakdown</h2>
+
+            <div class="recommendation-grid">
+
+                {% for category, amount in result.get('budget_breakdown').items() %}
+
+                <div class="recommendation-card">
+
+                    <div class="recommendation-card-header">
+
+                        <span class="category">
+                            {{ category }}
+                        </span>
+
+                        <span class="price">
+                            ₹{{ amount }}
+                        </span>
+
+                    </div>
+
+                    <h2>
+                        {{ category }}
+                    </h2>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- ============================= -->
+        <!-- RECOMMENDATIONS -->
+        <!-- ============================= -->
+
+        <div class="recommendation-grid">
+
+
+            <!-- ============================= -->
+            <!-- HOME PLANNER -->
+            <!-- ============================= -->
+
+            {% if result.get('items') %}
+
+            {% for product in result.get('items') %}
+
+            <div class="recommendation-card">
+
+                <div class="recommendation-card-header">
+
+                    <span class="category">
+                        {{ product.get('category', 'General') }}
+                    </span>
+
+                    <span class="price">
+                        ₹{{ product.get('estimated_price', 0) }}
+                    </span>
+
+                </div>
+
+                <h2>
+                    {{ product.get('name', 'Recommended Item') }}
+                </h2>
+
+                <p>
+                    {{ product.get('reason', '') }}
+                </p>
+
+                <div class="product-platform">
+
+                    <strong>Platform:</strong>
+
+                    {{ product.get('platform', 'Online') }}
+
+                </div>
+
+                {% if product.get('platform_link') %}
+
+                <a href="{{ product.get('platform_link') }}" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary">
+                    View Product
+                </a>
+
+                {% endif %}
+
+            </div>
+
+            {% endfor %}
+
+
+            <!-- ============================= -->
+            <!-- PARTY / JEWELRY PLANNER -->
+            <!-- ============================= -->
+
+            {% elif result.get('recommendations') %}
+
+            {% for product in result.get('recommendations') %}
+
+            <div class="recommendation-card">
+
+                <div class="recommendation-card-header">
+
+                    <span class="category">
+                        {{ product.get('category', 'General') }}
+                    </span>
+
+                    <span class="price">
+                        ₹{{ product.get('estimated_price', 0) }}
+                    </span>
+
+                </div>
+
+                <h2>
+                    {{ product.get('name', 'Recommended Item') }}
+                </h2>
+
+                <p>
+                    {{ product.get('reason', '') }}
+                </p>
+
+                <div class="product-platform">
+
+                    <strong>Platform:</strong>
+
+                    {{ product.get('platform', 'Online') }}
+
+                </div>
+
+                {% if product.get('platform_link') %}
+
+                <a href="{{ product.get('platform_link') }}" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary">
+                    View Product
+                </a>
+
+                {% endif %}
+
+            </div>
+
+            {% endfor %}
+
+
+            <!-- ============================= -->
+            <!-- NO ITEMS -->
+            <!-- ============================= -->
+
+            {% else %}
+
+            <div class="recommendation-card">
+
+                <h2>No recommendations available</h2>
+
+                <p>
+                    We could not find recommendation items for this request.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- ACTION BUTTONS -->
+        <!-- ============================= -->
+
+        <div class="recommendation-actions">
+
+            <a href="/dashboard" class="btn btn-secondary">
+                Back to Dashboard
+            </a>
+
+            <a href="/history" class="btn btn-secondary">
+                View History
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

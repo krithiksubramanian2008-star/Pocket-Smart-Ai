@@ -1,0 +1,27 @@
+{% extends "base.html" %}{% block title %}Dashboard — PocketSmart AI{% endblock %}
+{% block content %}<section class="page">
+    <div class="dashhead">
+        <div>
+            <div class="eyebrow">YOUR DASHBOARD</div>
+            <h1>Hello, {{user.name}} ✦</h1>
+            <p>Your planning space, all in one place.</p>
+        </div><a class="btn primary" href="/home-planner">Create a plan →</a>
+    </div>
+    <div class="quick"><a href="/home-planner"><i>⌂</i><b>Home Interior</b><small>Furniture & decor</small>→</a><a
+            href="/party-planner"><i>✦</i><b>Party Planner</b><small>Food & events</small>→</a><a
+            href="/jewelry-planner"><i>◇</i><b>Jewelry Match</b><small>Style & occasion</small>→</a></div>
+    <div class="section-head compact">
+        <div>
+            <div class="eyebrow">RECENT ACTIVITY</div>
+            <h2>Your latest plans</h2>
+        </div><a href="/history">View all →</a>
+    </div>
+    {% if recent %}<div class="list">{% for r in recent %}<a href="/recommendations/{{r.id}}"><i
+                class="{{r.planner_type}}"></i>
+            <div><b>{{r.planner_type|title}} planner</b><small>{{r.created_at.strftime('%d %b %Y, %I:%M %p')}}</small>
+            </div><span>→</span>
+        </a>{% endfor %}</div>{% else %}<div class="empty">
+        <h3>Your first plan is waiting.</h3>
+        <p>Choose a planner above to get started.</p>
+    </div>{% endif %}
+</section>{% endblock %}

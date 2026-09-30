@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Party Planner — PocketSmart AI{% endblock %}{% block content %}
+<section class="planner"><a class="back" href="/">← Back</a><div class="eyebrow">02 · PARTY PLANNER</div>
+<h1>Plan the celebration, <span>not the stress.</span></h1><p class="lead">Set your budget and guest count. PocketSmart will break the event into food, venue, decoration and entertainment.</p>
+<div class="planner-grid"><form id="party-form" class="formbox">
+<label>Event budget<input id="party-budget" type="number" min="1" placeholder="30000" required></label>
+<div class="twocol"><label>Guests<input id="guests" type="number" min="1" placeholder="50" required></label><label>Event type<select id="event-type"><option>Birthday</option><option>Wedding</option><option>Corporate</option><option>Anniversary</option></select></label></div>
+<div class="twocol"><label>Location / venue<input id="venue" placeholder="Coimbatore" required></label><label>Food preference<select id="food-preference"><option>Vegetarian</option><option>Non-Vegetarian</option><option>Both</option></select></label></div>
+<label>Special requirements<textarea id="party-requirements"></textarea></label>
+<button class="btn primary" type="submit">Generate party plan ✦</button><div id="party-status"></div>
+</form><aside><h3>Budget categories</h3><p>Food — 45%</p><p>Venue — 25%</p><p>Decoration — 15%</p><p>Entertainment — 15%</p><small>AI adjusts the plan to your event context.</small></aside></div></section>{% endblock %}

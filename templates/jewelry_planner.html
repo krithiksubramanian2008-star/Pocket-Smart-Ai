@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block title %}Jewelry Planner — PocketSmart AI{% endblock %}{% block content %}
+<section class="planner"><a class="back" href="/">← Back</a><div class="eyebrow">03 · JEWELRY MATCH</div>
+<h1>Find the detail that <span>pulls it together.</span></h1><p class="lead">Choose your occasion and style. Optionally upload an outfit image so the AI can consider visible color and aesthetic cues.</p>
+<div class="planner-grid"><form id="jewelry-form" class="formbox">
+<label>Budget<input name="budget" type="number" min="1" placeholder="5000" required></label>
+<div class="twocol"><label>Occasion<select name="occasion"><option>Wedding</option><option>Birthday</option><option>Party</option><option>College Event</option></select></label><label>Style<select name="style"><option>Traditional</option><option>Modern</option><option>Minimalist</option><option>Bridal</option></select></label></div>
+<label>Outfit color<input name="outfit_color" placeholder="e.g. dark blue"></label>
+<label class="upload">↑<input type="file" name="image" id="jewelry-image" accept="image/jpeg,image/png,image/webp"><b>Choose outfit image</b><small id="file-name">JPG, PNG or WEBP · Max 5 MB</small></label>
+<label>Additional requirements<textarea name="additional_requirements" placeholder="Example: elegant but not too heavy"></textarea></label>
+<button class="btn primary" type="submit">Find my jewelry match ✦</button><div id="jewelry-status"></div>
+</form><aside><h3>Multimodal matching</h3><p>Your image is optional. When supplied, the AI can use visible color and style cues with your budget and occasion.</p></aside></div></section>{% endblock %}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="PocketSmart AI - Smart Budget & Recommendation Assistant">
+    <title>{% block title %}PocketSmart AI{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <header class="nav">
+        <a class="brand" href="/"><span class="logo">P</span><span>PocketSmart <b>AI</b></span></a>
+        <nav>
+            <a href="/">Home</a><a href="/home-planner">Interior</a><a href="/party-planner">Party</a><a
+                href="/jewelry-planner">Jewelry</a>
+            {% if user %}<a href="/dashboard">Dashboard</a><a href="/history">History</a><a class="navbtn"
+                href="/logout">Logout</a>
+            {% else %}<a href="/login">Login</a><a class="navbtn" href="/register">Get Started</a>{% endif %}
+        </nav>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+    <footer>
+        <div class="brand"><span class="logo">P</span><span>PocketSmart <b>AI</b></span></div>
+        <p>Plan smarter. Spend intentionally.</p>
+    </footer>
+    <script src="/static/js/app.js"></script>
+</body>
+
+</html>

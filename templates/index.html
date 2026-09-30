@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% block title %}PocketSmart AI — Smart Budget Planning{% endblock %}
+{% block content %}
+<section class="hero"><div>
+<div class="eyebrow">✦ AI-POWERED BUDGET PLANNING</div>
+<h1>Make every rupee<br><span>work smarter.</span></h1>
+<p>Plan your home, organize an event, or find jewelry that fits your style — while staying within the budget you choose.</p>
+<div class="actions"><a class="btn primary" href="{% if user %}/dashboard{% else %}/register{% endif %}">Start planning →</a><a class="btn" href="#planners">Explore planners</a></div>
+<div class="trust">✓ Budget-aware &nbsp; ✓ Personalized &nbsp; ✓ AI-assisted</div></div>
+<div class="visual"><div class="floating top">✦ <b>Smart recommendations</b><small>Built around your budget</small></div>
+<div class="budget-card"><small>YOUR SMART BUDGET</small><strong>₹50,000</strong><div><span>Planned</span><b>₹42,350</b></div><div class="bar"><i></i></div><div><span>Remaining</span><b>₹7,650</b></div><em>✦ AI optimized your plan</em></div>
+<div class="floating bottom">✓ <b>Within budget</b><small>5 recommendations found</small></div></div></section>
+<section id="planners" class="section"><div class="section-head"><div><div class="eyebrow">CHOOSE YOUR PLAN</div><h2>One smart assistant.<br>Three everyday planners.</h2></div><p>Tell PocketSmart what you need and let the recommendation engine organize options around your budget.</p></div>
+<div class="cards">
+<a class="card home" href="/home-planner"><span>01</span><i>⌂</i><h3>Home Interior</h3><p>Furniture, lighting, fans and decor — planned room by room.</p><b>Plan my home →</b></a>
+<a class="card party" href="/party-planner"><span>02</span><i>✦</i><h3>Party Planner</h3><p>Balance food, venue, decoration and entertainment.</p><b>Plan my party →</b></a>
+<a class="card jewelry" href="/jewelry-planner"><span>03</span><i>◇</i><h3>Jewelry Match</h3><p>Find jewelry ideas based on occasion, style and outfit.</p><b>Find my match →</b></a>
+</div></section>
+<section class="dark"><div class="eyebrow">HOW IT WORKS</div><h2>From budget to plan in three steps.</h2><div class="steps"><div><b>01</b><h3>Tell us what you need</h3><p>Enter budget, preferences and requirements.</p></div><div><b>02</b><h3>AI builds your plan</h3><p>PocketSmart organizes recommendations around the budget.</p></div><div><b>03</b><h3>Explore & save</h3><p>Review suggestions and keep them in history.</p></div></div></section>
+{% endblock %}

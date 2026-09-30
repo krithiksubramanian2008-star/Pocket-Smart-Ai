@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}History - PocketSmart AI{% endblock %}
+
+{% block content %}
+
+<section class="section">
+
+    <div class="container">
+
+        <!-- ===================================== -->
+        <!-- PAGE HEADER -->
+        <!-- ===================================== -->
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="eyebrow">
+                    YOUR HISTORY
+                </span>
+
+                <h1>
+                    Recommendation History
+                </h1>
+
+                <p>
+                    View all your previous budget recommendations.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ===================================== -->
+        <!-- HISTORY -->
+        <!-- ===================================== -->
+
+        {% if history %}
+
+        <div class="recommendation-grid">
+
+            {% for item in history %}
+
+            <div class="recommendation-card">
+
+                <!-- ================================= -->
+                <!-- TOP SECTION -->
+                <!-- ================================= -->
+
+                <div class="recommendation-card-header">
+
+                    <span class="category">
+                        {{ item.planner_type | title }}
+                    </span>
+
+                    <span class="price">
+
+                        ₹{{ item.request_json.split('"budget":')[1].split(',')[0].strip() }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- ================================= -->
+                <!-- PLAN TITLE -->
+                <!-- ================================= -->
+
+                <h2>
+
+                    {{ item.planner_type | title }} Plan
+
+                </h2>
+
+
+                <!-- ================================= -->
+                <!-- CREATED DATE -->
+                <!-- ================================= -->
+
+                <p>
+
+                    <strong>Created:</strong>
+
+                    {{ item.created_at.strftime('%d %b %Y, %I:%M %p') }}
+
+                </p>
+
+
+                <!-- ================================= -->
+                <!-- SAVED STATUS -->
+                <!-- ================================= -->
+
+                {% if item.saved %}
+
+                <p class="history-saved">
+
+                    ⭐ Saved Recommendation
+
+                </p>
+
+                {% endif %}
+
+
+                <!-- ================================= -->
+                <!-- VIEW BUTTON -->
+                <!-- ================================= -->
+
+                <a href="/recommendations/{{ item.id }}" class="btn btn-primary">
+
+                    View Recommendation
+
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- ===================================== -->
+        <!-- EMPTY HISTORY -->
+        <!-- ===================================== -->
+
+        {% else %}
+
+        <div class="recommendation-card">
+
+            <h2>
+                No recommendations yet
+            </h2>
+
+            <p>
+                Generate a recommendation first and it will appear here.
+            </p>
+
+            <a href="/dashboard" class="btn btn-primary">
+                Go to Dashboard
+            </a>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- ===================================== -->
+        <!-- BACK BUTTON -->
+        <!-- ===================================== -->
+
+        <div class="recommendation-actions">
+
+            <a href="/dashboard" class="btn btn-secondary">
+                Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
